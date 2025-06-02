@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haftalık Plan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <form id="work-schedule-form">
+            <div class="table-container">
+                <table id="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="empty-header">
+                                <div contenteditable="true" id="schedule-title" class="schedule-title" placeholder="Haftalık Plan Başlığı">Haftalık Plan</div>
+                            </th>
+                            <th>Adı Soyadı</th>
+                            <th>Pazartesi</th>
+                            <th>Salı</th>
+                            <th>Çarşamba</th>
+                            <th>Perşembe</th>
+                            <th>Cuma</th>
+                            <th>Cumartesi</th>
+                            <th>Pazar</th>
+                            <th>Haf. Top. Cal. Saat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-body">
+                        </tbody>
+                    <tbody id="special-rows-body">
+                        <tr>
+                            <td colspan="2" class="special-row-header">Toplanti Gunleri</td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Pazartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Salı"></td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Çarşamba"></td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Perşembe"></td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Cuma"></td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Cumartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-ToplantiGunleri-Pazar"></td>
+                            <td class="button-cell" id="shuffle-button-cell">
+                                <button type="button" id="shuffle-button" class="shuffle-button">
+                                    <i class="fas fa-random"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="special-row-header">Sevkiyat Gunleri</td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Pazartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Salı"></td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Çarşamba"></td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Perşembe"></td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Cuma"></td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Cumartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-SevkiyatGunleri-Pazar"></td>
+                            <td class="button-cell" id="download-button-cell">
+                                <button type="button" id="download-button" class="download-button">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="special-row-header">Tat-Num Testi Gunleri</td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Pazartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Salı"></td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Çarşamba"></td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Perşembe"></td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Cuma"></td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Cumartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-TatNumTestiGunleri-Pazar"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="special-row-header">El Ilani Dagitim Gunleri</td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Pazartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Salı"></td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Çarşamba"></td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Perşembe"></td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Cuma"></td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Cumartesi"></td>
+                            <td><input type="checkbox" id="special-checkbox-ElIlaniDagitimGunleri-Pazar"></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="notification" style="display:none; padding: 10px; margin-top: 10px;"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

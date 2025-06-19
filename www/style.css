@@ -1,0 +1,261 @@
+/* Renk Paleti */
+:root {
+  --bim-red: #E4002B;
+  --bim-blue: #4361ee;
+  --bim-purple: #7209b7;
+  --bim-teal: #4cc9f0;
+  --bim-green: #06d6a0;
+  --bim-yellow: #ffd166;
+  --bim-light: #f8f9fa;
+  --bim-dark: #212529;
+  --bim-card-bg: #ffffff;
+  --bim-hover: #f1f3ff;
+  --bim-manual-lock: rgba(255, 223, 114, 0.6);
+  --border-color: #e9ecef;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif; }
+
+body { background: #eef1f5; color: var(--bim-dark); padding: 20px; font-size: 12px; }
+
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--bim-card-bg);
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-header {
+  height: 15px;
+  background: linear-gradient(120deg, var(--bim-blue), var(--bim-purple));
+  flex-shrink: 0;
+}
+
+/* Ana İçerik ve Tablo */
+.main-content { flex: 1; overflow: auto; }
+.table-container { 
+  overflow-x: auto;
+  position: relative;
+}
+.schedule-table { 
+  width: 100%; 
+  min-width: 900px; 
+  border-collapse: separate; 
+  border-spacing: 0;
+  /* DÜZELTME: Sabit yerleşim algoritması eklendi */
+  table-layout: fixed;
+}
+
+.schedule-table thead tr { 
+  background: linear-gradient(120deg, var(--bim-blue), var(--bim-purple));
+  height: 44px;
+}
+.schedule-table th {
+  padding: 4px 5px;
+  font-weight: 700;
+  position: sticky; top: 0; z-index: 10;
+  color: white;
+  background: transparent;
+  font-size: 12px;
+  text-align: center;
+  white-space: normal;
+  border-right: none;
+  vertical-align: middle;
+}
+.schedule-table td {
+  height: 36px;
+  font-size: 12px;
+  padding: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.schedule-table th, .schedule-table td { border-right: 1px solid var(--border-color); }
+.schedule-table th:last-child, .schedule-table td:last-child { border-right: none; }
+.schedule-table tbody tr:hover td { background-color: var(--bim-hover); }
+
+#sidebar-toggle-btn {
+    position: absolute;
+    z-index: 15;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    left: 2.5%;
+    top: 22px;
+    transform: translate(-50%, -50%);
+}
+#sidebar-toggle-btn:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: var(--bim-purple);
+}
+
+.schedule-table.sidebar-collapsed .sidebar-column {
+    display: none;
+}
+
+.schedule-table th:nth-child(1) { width: 5%; }
+.schedule-table th:nth-child(2), .schedule-table td:nth-child(2) {
+  width: 85px;
+}
+.schedule-table th:nth-child(n+3):nth-child(-n+9), .schedule-table td:nth-child(n+3):nth-child(-n+9) {
+    width: 85px;
+}
+.schedule-table th:last-child { width: 7%; }
+
+.person-type { font-weight: 800; color: var(--bim-blue); cursor: pointer; text-align: center; vertical-align: middle; }
+.toggleable-row .person-type:hover { color: var(--bim-red); }
+.person-name input { width: 100%; border: none; padding: 4px 8px; text-align: left; background: transparent; font-weight: 600; font-size: 12px; outline: none; }
+select { width: 100%; height: 100%; border: none; padding: 0 4px; text-align: center; background: transparent; cursor: pointer; font-size: 12px; appearance: none; font-weight: 600; }
+select:focus { outline: none; background: rgba(67, 97, 238, 0.1); }
+.manual-lock { background-color: var(--bim-manual-lock) !important; }
+.total-hours { font-weight: 800; color: var(--bim-blue); font-size: 12px; text-align: center; vertical-align: middle; }
+.hidden-row { display: none !important; }
+
+.app-footer {
+  position: relative;
+  flex-shrink: 0;
+  background: linear-gradient(120deg, var(--bim-blue), var(--bim-purple));
+  color: white;
+  z-index: 10;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  margin-top: 40px;
+}
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 15px;
+  width: 100%;
+}
+.footer-title-group {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.stats {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.floating-actions-container{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display:flex;
+  gap:12px;
+  padding:8px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  border-radius:50px;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+  z-index:100;
+}
+.action-btn{
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all .2s ease;
+  color: #fff;
+}
+.action-btn:active { transform: scale(.9); filter: brightness(1.2); }
+.action-btn:disabled { background-color: #adb5bd !important; cursor: not-allowed; filter: grayscale(80%); }
+.action-btn:disabled:active { transform: none; }
+
+#add-row-btn { background-color: var(--bim-blue); }
+#action-lock { background-color: #6c757d; }
+#action-lock.locked { background-color: var(--bim-yellow); color: var(--bim-dark); }
+#action-shuffle { background-color: var(--bim-red); }
+#action-drawer { background-color: var(--bim-purple); }
+#action-download { background-color: var(--bim-green); }
+
+#action-shuffle.interrupted-state {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+    border-radius: 4px !important;
+    transform: scale(1) !important;
+    border: 2px solid #212529;
+}
+
+#action-drawer.open { background-color: var(--bim-teal); }
+#action-drawer i { transition: transform .3s ease; }
+#action-drawer.open i { transform: rotate(180deg); }
+
+
+.footer-title-group, .stats, .stat-item, .stat-value, .stat-label { font-size: 14px; }
+.footer-title-group i { font-size: 16px; }
+.footer-title-group .title-input { background: transparent; border: none; color: white; font-weight: 700; padding: 5px; outline: none; width: 100%; max-width: 250px; }
+.stat-item { text-align: right; }
+.stat-value { font-weight: 700; }
+.stat-label { opacity: 0.8; }
+
+.special-days-container{background:var(--bim-card-bg);box-shadow:0 -10px 30px rgba(0,0,0,.1);padding:20px;border-top:2px solid var(--bim-purple);position:fixed;bottom:0;left:0;width:100%;transform:translateY(100%);transition:transform .4s cubic-bezier(.25,1,.5,1);z-index:1500}
+.special-days-container.open{transform:translateY(0)}
+.special-days-header{display:flex;align-items:center;gap:12px;margin-bottom:15px;padding-bottom:15px;border-bottom:1px solid var(--border-color)}
+.special-day-grid{display:grid;grid-template-columns:2fr repeat(7,1fr);gap:10px;align-items:center;row-gap:15px;}
+.day-header{font-weight:700;text-align:center;padding:10px;background:rgba(67,97,238,.05);border-radius:8px;color:var(--bim-blue);font-size:12px}
+.event-label{grid-column:1;font-weight:600;padding-left:10px}
+.day-checkbox{display:flex;justify-content:center;align-items:center}
+.day-checkbox input[type=checkbox]{-webkit-appearance:none;appearance:none;background-color:transparent;width:25px;height:18px;border:2px solid var(--bim-purple);border-radius:4px;cursor:pointer;position:relative;transition:all .2s ease-in-out}
+.day-checkbox input[type=checkbox]:checked{background-color:var(--bim-purple);border-color:var(--bim-purple)}
+.day-checkbox input[type=checkbox]:checked:after{content:"✔";font-size:14px;color:#fff;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:opacity .4s ease;z-index:1499}
+.overlay.show{opacity:1;visibility:visible}
+
+.notification-container{
+  position:fixed;
+  top:20px;
+  right:20px;
+  left: auto;
+  bottom: auto;
+  z-index:2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.notification{position:relative;width:320px;padding:15px 20px;border-radius:12px;font-weight:600;display:flex;align-items:flex-start;gap:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);transform:translateX(150%);transition:all .4s cubic-bezier(.175,.885,.32,1.275);margin-bottom:10px;cursor:pointer}.notification.show{transform:translateX(0)}.notification.success{background:var(--bim-green);color:#fff}.notification.error{background:var(--bim-red);color:#fff}.notification.info{background:var(--bim-blue);color:#fff}
+
+@media (max-width: 900px) {
+  .status-bar {
+    gap: 15px;
+    padding: 8px 12px;
+    justify-content: space-between;
+    overflow-x: auto;
+  }
+  .footer-title-group {
+    flex-basis: auto;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+  .stats {
+    flex-basis: auto;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+    body { padding: 5px; }
+    .app-container { border-radius: 10px; }
+    .action-btn { width: 38px; height: 38px; margin: 0 4px; }
+}

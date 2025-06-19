@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akıllı Haftalık Plan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+  <div class="app-container" id="app-container">
+    <header class="app-header"></header>
+    <main class="main-content">
+      <div class="table-container" id="table-container">
+        <button id="sidebar-toggle-btn" title="Menüyü Gizle">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <table class="schedule-table" id="schedule-table">
+          <thead>
+            <tr>
+              <th class="sidebar-column" id="sidebar-toggle-header">
+              </th>
+              <th class="sidebar-column person-name-column">Adı<br>Soyadı</th>
+              <th>Pzt</th>
+              <th>Salı</th>
+              <th>Çrş</th>
+              <th>Prş</th>
+              <th>Cuma</th>
+              <th>Cmt</th>
+              <th>Paz</th>
+              <th>Toplam<br>Saat</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-body">
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+       <div class="floating-actions-container">
+          <button class="action-btn" id="add-row-btn" title="Yeni Personel Ekle"><i class="fas fa-plus"></i></button>
+          <button class="action-btn" id="action-lock" title="Değişiklikleri Kilitle"><i class="fas fa-lock-open"></i></button>
+          <button class="action-btn" id="action-shuffle" title="Plan Oluştur"><i class="fas fa-random"></i></button>
+          <button class="action-btn" id="action-drawer" title="Özel Günler"><i class="fas fa-chevron-up"></i></button>
+          <button class="action-btn" id="action-download" title="PNG Olarak İndir"><i class="fas fa-download"></i></button>
+        </div>
+      <div class="status-bar">
+        <div class="footer-title-group">
+          <i class="fas fa-calendar-alt"></i>
+          <input type="text" class="title-input" id="schedule-title-input" value="Haftalık Çalışma Planı" maxlength="50">
+        </div>
+
+        <div class="stats">
+          <div class="stat-item">
+            <div class="stat-value" id="locked-cells">0</div>
+            <div class="stat-label">Kilitli</div>
+          </div>
+           <div class="stat-item">
+            <div class="stat-value" id="active-personnel">0</div>
+            <div class="stat-label">Personel</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="total-hours">0</div>
+            <div class="stat-label">Toplam Saat</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="special-days-container" id="special-days-drawer">
+     <div class="special-days-header">
+      <i class="fas fa-calendar-check"></i>
+      <h2>Özel Günler</h2>
+    </div>
+    <div class="special-day-grid" id="special-day-grid">
+      </div>
+  </div>
+  
+  <div class="overlay" id="overlay"></div>
+  <div id="notification-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
